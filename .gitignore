@@ -22,3 +22,5 @@ vendor
 
 deploy/deploy.rb
 deploy/stages/*.rb
+
+.idea/*

@@ -215,7 +215,9 @@ sylius_search:
             mappings:
                 id: ~
                 name: ~
-                description: ~
+                descriptionStripTags: ~
+                searchKeywordsHelper: ~
+                skuAllVariants: ~
     custom_accessor: Sylius\Component\Product\Accessor\ProductAccessor
     filters:
         pre_search_filter:

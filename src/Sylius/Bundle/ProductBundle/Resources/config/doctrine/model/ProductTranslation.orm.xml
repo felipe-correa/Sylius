@@ -22,9 +22,12 @@
         <field name="name" column="name" type="string">
             <gedmo:versioned />
         </field>
+
+        <!-- Felipe Correa - 2016-11-21 02:17, necessário sobrescrever manualmente
+        o slug pois attribute-override não permite a sobrescrita do gedmo
         <field name="slug" column="slug" type="string" unique="true">
             <gedmo:slug fields="name" unique="true" />
-        </field>
+        </field>-->
         <field name="description" column="description" type="text">
             <gedmo:versioned />
         </field>
@@ -35,7 +38,7 @@
             <gedmo:versioned />
         </field>
 
-         <gedmo:loggable />
+        <gedmo:loggable />
     </mapped-superclass>
 
 </doctrine-mapping>

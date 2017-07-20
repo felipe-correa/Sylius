@@ -11,12 +11,17 @@
 
 namespace Sylius\Bundle\SearchBundle\Model;
 
+use Uoou\Bundle\CoreBundle\Entity\AccountAwareInterface;
+use Sylius\Component\Channel\Model\ChannelAwareInterface;
+
 /**
  * SearchLog entity
  *
  * @author Argyrios Gounaris <agounaris@gmail.com>
  */
-interface SearchLogInterface
+interface SearchLogInterface extends
+    AccountAwareInterface,
+    ChannelAwareInterface
 {
     /**
      * Set searchString

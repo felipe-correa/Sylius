@@ -17,11 +17,6 @@
                                         http://symfony.com/schema/dic/services/constraint-mapping-1.0.xsd">
 
     <class name="Sylius\Component\Report\Model\Report">
-        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
-            <option name="fields">code</option>
-            <option name="message">sylius.report.code.in_use</option>
-            <option name="groups">sylius</option>
-        </constraint>
         <property name="name">
             <constraint name="NotBlank">
                 <option name="message">sylius.report.name.not_blank</option>

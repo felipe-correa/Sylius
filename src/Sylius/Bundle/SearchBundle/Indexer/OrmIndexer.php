@@ -164,6 +164,7 @@ class OrmIndexer implements IndexerInterface
         }
     }
 
+
     /**
      * @param string $entityName
      * @param array  $fields
@@ -179,8 +180,10 @@ class OrmIndexer implements IndexerInterface
             ->from('Sylius\Bundle\SearchBundle\Model\SearchIndex', 'u')
             ->where('u.itemId = :item_id')
             ->andWhere('u.entity = :entity_namespace')
+            ->andWhere('u.account = :account')
             ->setParameter(':item_id', $entity->getId())
             ->setParameter(':entity_namespace', get_class($entity))
+            ->setParameter(':account', $entity->getAccount())
         ;
 
         try {
@@ -190,6 +193,7 @@ class OrmIndexer implements IndexerInterface
             $searchIndex = new SearchIndex();
             $searchIndex->setItemId($entity->getId());
             $searchIndex->setEntity($entityName);
+            $searchIndex->setAccount($entity->getAccount());
             $searchIndex->setValue($content);
         }
 

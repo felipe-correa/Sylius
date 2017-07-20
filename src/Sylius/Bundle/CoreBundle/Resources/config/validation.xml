@@ -26,11 +26,11 @@
     </class>
 
     <class name="Sylius\Component\Core\Model\ProductVariant">
-        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+<!--        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">sku</option>
             <option name="message">sylius.product_variant.sku.unique</option>
             <option name="groups">sylius</option>
-        </constraint>
+        </constraint>-->
         <property name="price">
             <constraint name="NotBlank">
                 <option name="message">sylius.product_variant.price.not_blank</option>

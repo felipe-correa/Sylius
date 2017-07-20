@@ -47,7 +47,7 @@ class CurrencyConverter implements CurrencyConverterInterface
      */
     public function convert($value, $code)
     {
-        $currency = $this->getCurrency($code);
+        $currency = is_string($code) ? $this->getCurrency($code) : $code;
 
         if (null === $currency) {
             throw new UnavailableCurrencyException($code);
