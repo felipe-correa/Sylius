@@ -2,7 +2,7 @@
     "name":        "sylius/sylius",
     "type":        "project",
     "description": "E-Commerce platform for PHP, based on Symfony framework.",
-    "license":     "MIT",
+    "license":     "proprietary",
     "homepage":    "http://sylius.org",
     "authors": [
         {
