@@ -21,11 +21,11 @@
             <option name="message">sylius.customer.email.registered</option>
             <option name="groups">sylius_customer_guest</option>
         </constraint>
-        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+        <!--<constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="message">sylius.customer.email.unique</option>
             <option name="fields">email</option>
             <option name="groups">sylius</option>
-        </constraint>
+        </constraint>-->
         <property name="firstName">
             <constraint name="NotBlank">
                 <option name="message">sylius.customer.first_name.not_blank</option>

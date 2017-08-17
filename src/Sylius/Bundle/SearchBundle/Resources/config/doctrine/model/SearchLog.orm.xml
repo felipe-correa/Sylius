@@ -29,5 +29,17 @@
         <field name="createdAt" type="datetime" column="created_at">
             <gedmo:timestampable on="create"/>
         </field>
+        
+        <many-to-one field="account" target-entity="Uoou\Bundle\CoreBundle\Entity\Account">
+            <join-column name="account_id" referenced-column-name="id" nullable="false" on-delete="RESTRICT" />
+        </many-to-one>
+
+        <many-to-one field="channel" target-entity="Uoou\Bundle\CoreBundle\Entity\Channel">
+            <join-column name="channel_id" referenced-column-name="id" nullable="false" on-delete="RESTRICT" />
+        </many-to-one>
+
+        <many-to-one field="customer" target-entity="Uoou\Bundle\UserBundle\Entity\Customer">
+            <join-column name="customer_id" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
+        </many-to-one>
     </entity>
 </doctrine-mapping>

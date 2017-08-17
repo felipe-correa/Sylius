@@ -180,6 +180,13 @@ class ResourceController extends FOSRestController
     {
         $this->isGrantedOr403('create');
 
+        if (property_exists($resource, 'account')) {
+            $resource->setAccount($this->getChannelContext()->getChannel()->getAccount());
+        }
+        if (property_exists($resource, 'channel')) {
+            $resource->setChannel($this->getChannelContext()->getChannel());
+        }
+
         $resource = $this->createNew();
         $form = $this->getForm($resource);
 
@@ -450,11 +457,12 @@ class ResourceController extends FOSRestController
 
         $criteria = array_merge($default, $criteria);
 
-        if (!$resource = $this->resourceResolver->getResource(
+        $resource = $this->resourceResolver->getResource(
             $this->getRepository(),
             'findOneBy',
-            array($this->config->getCriteria($criteria)))
-        ) {
+            array($this->config->getCriteria($criteria))
+        );
+        if (!$resource || (property_exists($resource, 'account') && $resource->getAccount()->getId() !== $this->getChannelContext()->getChannel()->getAccount()->getId())){
             throw new NotFoundHttpException(
                 sprintf(
                     'Requested %s does not exist with these criteria: %s.',
@@ -511,12 +519,13 @@ class ResourceController extends FOSRestController
      *
      * @return RedirectResponse|Response
      */
-    protected function toggle(Request $request, $enabled)
+    protected function toggle(Request $request, $enabled, $field = 'Enabled')
     {
         $this->isGrantedOr403('update');
+        $pathSetMethod = 'set'.$field;
 
         $resource = $this->findOr404($request);
-        $resource->setEnabled($enabled);
+        $resource->$pathSetMethod($enabled);
 
         $this->domainManager->update($resource, $enabled ? 'enable' : 'disable');
 

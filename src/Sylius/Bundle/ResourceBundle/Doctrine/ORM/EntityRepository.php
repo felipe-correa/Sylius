@@ -31,26 +31,29 @@ class EntityRepository extends BaseEntityRepository implements RepositoryInterfa
      *
      * @return null|object
      */
-    public function find($id)
+    public function find($id, array $criteria = array())
     {
-        return $this
-            ->getQueryBuilder()
-            ->andWhere($this->getAlias().'.id = '.intval($id))
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $queryBuilder = $this->getQueryBuilder()
+            ->andWhere($this->getAlias().'.id = '.intval($id));
+        $this->applyCriteria($queryBuilder, $criteria);
+        return
+            $queryBuilder
+                ->getQuery()
+                ->getOneOrNullResult()
+            ;
     }
 
     /**
      * @return array
      */
-    public function findAll()
+    public function findAll(array $criteria = array())
     {
-        return $this
-            ->getCollectionQueryBuilder()
+        $queryBuilder = $this->getCollectionQueryBuilder();
+        $this->applyCriteria($queryBuilder, $criteria);
+        return $queryBuilder
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     /**

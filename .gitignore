@@ -25,3 +25,5 @@
 /behat.yml
 /phpunit.xml
 /phpspec.yml
+.idea/*
+.vscode/*

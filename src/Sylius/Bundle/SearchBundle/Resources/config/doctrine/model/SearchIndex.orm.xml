@@ -34,6 +34,13 @@
             <index name="fulltext_search_idx" columns="item_id"/>
             <index name="item_id_idx" columns="item_id"/>
             <index name="item_id_entity_idx" columns="item_id,entity"/>
+            <!--
+            Felipe Corrêa - 2015-01-06
+            FULL TEXT doesnt work for some reason, so I created manually an index named fulltext_value_tags
+            in mysql table sylius_search_index and then for contability purposen and avoid remove this
+            index in the futuro we'll let this line index with the name same:
+            -->
+            <index name="fulltext_value_tags" columns="value,tags" />
         </indexes>
 
         <id name="id" type="integer" column="id">
@@ -47,5 +54,10 @@
         <field name="createdAt" type="datetime" column="created_at">
             <gedmo:timestampable on="create"/>
         </field>
+
+        <many-to-one field="account" target-entity="Uoou\Bundle\CoreBundle\Entity\Account">
+            <join-column name="account_id" referenced-column-name="id" nullable="false" on-delete="RESTRICT" />
+        </many-to-one>
+
     </entity>
 </doctrine-mapping>

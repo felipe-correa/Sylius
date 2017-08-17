@@ -249,6 +249,9 @@ sylius_search:
                 id: ~
                 name: ~
                 description: ~
+                descriptionStripTags: ~
+                searchKeywordsHelper: ~
+                skuAllVariants: ~
     custom_accessor: Sylius\Component\Core\Accessor\ProductAccessor
     filters:
         pre_search_filter:

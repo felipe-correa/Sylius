@@ -47,6 +47,23 @@ class SearchLog implements SearchLogInterface
     }
 
     /**
+     * The associated account
+     *
+     * @var AccountInterface
+     */
+    protected $account;
+    /**
+     * Channel.
+     *
+     * @var ChannelInterface
+     */
+    protected $channel;
+    /**
+     * @var CustomerInterface
+     */
+    protected $customer;
+
+    /**
      * {@inheritdoc}
      */
     public function setSearchString($searchString)
@@ -98,5 +115,50 @@ class SearchLog implements SearchLogInterface
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAccount()
+    {
+        return $this->account;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAccount(AccountInterface $account)
+    {
+        $this->account = $account;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getChannel()
+    {
+        return $this->channel;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setChannel(BaseChannelInterface $channel = null)
+    {
+        $this->channel = $channel;
+        return $this;
+    }
+
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+    
+    public function setCustomer(CustomerInterface $customer = null)
+    {
+        $this->customer = $customer;
+        return $this;
     }
 }

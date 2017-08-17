@@ -11,12 +11,14 @@
 
 namespace Sylius\Bundle\SearchBundle\Model;
 
+use Uoou\Bundle\CoreBundle\Entity\AccountAwareInterface;
+
 /**
  * SearchIndex interface
  *
  * @author Argyrios Gounaris <agounaris@gmail.com>
  */
-interface SearchIndexInterface
+interface SearchIndexInterface extends AccountAwareInterface
 {
     /**
      * Set itemId

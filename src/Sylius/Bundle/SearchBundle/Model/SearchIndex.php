@@ -49,6 +49,13 @@ class SearchIndex implements SearchIndexInterface
     private $createdAt;
 
     /**
+     * The associated account
+     *
+     * @var AccountInterface
+     */
+    protected $account;
+
+    /**
      * {@inheritdoc}
      */
     public function getId()
@@ -144,5 +151,22 @@ class SearchIndex implements SearchIndexInterface
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAccount()
+    {
+        return $this->account;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAccount(AccountInterface $account)
+    {
+        $this->account = $account;
+        return $this;
     }
 }
