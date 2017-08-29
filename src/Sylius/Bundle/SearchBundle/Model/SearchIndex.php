@@ -10,6 +10,7 @@
  */
 
 namespace Sylius\Bundle\SearchBundle\Model;
+use Uoou\Bundle\CoreBundle\Entity\AccountInterface;
 
 /**
  * SearchIndex entity
