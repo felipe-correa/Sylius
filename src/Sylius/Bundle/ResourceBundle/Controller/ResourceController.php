@@ -160,6 +160,8 @@ class ResourceController extends FOSRestController
                 array($criteria, $sorting, $this->config->getLimit())
             );
         }
+//        $resources->getIterator();
+//        exit('aki');
 
         $view = $this
             ->view()
@@ -179,6 +181,7 @@ class ResourceController extends FOSRestController
     public function createAction(Request $request)
     {
         $this->isGrantedOr403('create');
+        $resource = $this->createNew();
 
         if (property_exists($resource, 'account')) {
             $resource->setAccount($this->getChannelContext()->getChannel()->getAccount());
@@ -187,7 +190,6 @@ class ResourceController extends FOSRestController
             $resource->setChannel($this->getChannelContext()->getChannel());
         }
 
-        $resource = $this->createNew();
         $form = $this->getForm($resource);
 
         if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
@@ -456,7 +458,6 @@ class ResourceController extends FOSRestController
         }
 
         $criteria = array_merge($default, $criteria);
-
         $resource = $this->resourceResolver->getResource(
             $this->getRepository(),
             'findOneBy',
@@ -577,5 +578,12 @@ class ResourceController extends FOSRestController
                 throw new AccessDeniedException(sprintf('Access denied to "%s" for "%s".', $grant, $this->getUser() ? $this->getUser()->getUsername() : 'anon.'));
             }
         }
+    }
+    /**
+     * @return \Sylius\Component\Channel\Context\ChannelContextInterface
+     */
+    protected function getChannelContext()
+    {
+        return $this->get('sylius.context.channel');
     }
 }

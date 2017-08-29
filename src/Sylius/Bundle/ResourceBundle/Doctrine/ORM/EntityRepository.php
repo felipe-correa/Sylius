@@ -81,12 +81,12 @@ class EntityRepository extends BaseEntityRepository implements RepositoryInterfa
      *
      * @return array
      */
-    public function findBy(array $criteria, array $sorting = array(), $limit = null, $offset = null)
+    public function findBy(array $criteria, array $sorting = null, $limit = null, $offset = null)
     {
         $queryBuilder = $this->getCollectionQueryBuilder();
 
         $this->applyCriteria($queryBuilder, $criteria);
-        $this->applySorting($queryBuilder, $sorting);
+        $sorting ? $this->applySorting($queryBuilder, $sorting): null;
 
         if (null !== $limit) {
             $queryBuilder->setMaxResults($limit);
@@ -125,12 +125,12 @@ class EntityRepository extends BaseEntityRepository implements RepositoryInterfa
     /**
      * {@inheritdoc}
      */
-    public function createPaginator(array $criteria = array(), array $sorting = array())
+    public function createPaginator(array $criteria = NULL, array $sorting = NULL)
     {
         $queryBuilder = $this->getCollectionQueryBuilder();
 
-        $this->applyCriteria($queryBuilder, $criteria);
-        $this->applySorting($queryBuilder, $sorting);
+        $criteria ? $this->applyCriteria($queryBuilder, $criteria): null;
+        $sorting ? $this->applySorting($queryBuilder, $sorting): null;
 
         return $this->getPaginator($queryBuilder);
     }

@@ -21,17 +21,13 @@ use Sylius\Component\Resource\Event\ResourceEvent;
  */
 class CartEvent extends ResourceEvent
 {
-    /**
-     * @var CartInterface
-     */
-    protected $cart;
 
     /**
      * @param CartInterface $cart
      */
     public function __construct(CartInterface $cart)
     {
-        $this->cart = $cart;
+        $this->subject = $cart;
     }
 
     /**
@@ -39,6 +35,7 @@ class CartEvent extends ResourceEvent
      */
     public function getCart()
     {
-        return $this->cart;
+        return $this->subject;
     }
+
 }

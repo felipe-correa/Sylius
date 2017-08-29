@@ -11,6 +11,10 @@
 
 namespace Sylius\Bundle\SearchBundle\Model;
 
+use Uoou\Bundle\CoreBundle\Entity\AccountInterface;
+use Sylius\Component\Channel\Model\ChannelInterface;
+use Uoou\Bundle\UserBundle\Entity\CustomerInterface;
+
 /**
  * SearchLog entity
  *
@@ -145,7 +149,7 @@ class SearchLog implements SearchLogInterface
     /**
      * {@inheritdoc}
      */
-    public function setChannel(BaseChannelInterface $channel = null)
+    public function setChannel(ChannelInterface $channel = null)
     {
         $this->channel = $channel;
         return $this;
