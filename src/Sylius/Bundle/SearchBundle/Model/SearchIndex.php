@@ -46,6 +46,16 @@ class SearchIndex implements SearchIndexInterface
     private $tags;
 
     /**
+     * @var string
+     */
+    private $itemSku;
+
+    /**
+     * @var string
+     */
+    private $itemName;
+
+    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -136,6 +146,43 @@ class SearchIndex implements SearchIndexInterface
     {
         return $this->tags;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getItemSku()
+    {
+        return $this->itemSku;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getItemName()
+    {
+        return $this->itemName;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setItemName($itemName)
+    {
+        $this->itemName = $itemName;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setItemSku($itemSku)
+    {
+        $this->itemSku = $itemSku;
+
+        return $this;
+    }
+
 
     /**
      * {@inheritdoc}

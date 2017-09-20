@@ -16,25 +16,87 @@ class ProductVariantImage extends Image implements ProductVariantImageInterface
     /**
      * The associated product variant.
      *
-     * @var ProductVariantInterface
+     * @var ProductVariantInterface[]|Collection
      */
-    protected $variant;
+    protected $variants;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getVariant()
+    public function __construct()
     {
-        return $this->variant;
+        $this->variants = new ArrayCollection();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setVariant(ProductVariantInterface $variant = null)
+    public function hasVariants()
     {
-        $this->variant = $variant;
+        return !$this->getVariants()->isEmpty();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getVariants()
+    {
+        return $this->variants->filter(function (BaseVariantInterface $variant) {
+            return !$variant->isDeleted() && !$variant->isMaster();
+        });
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAvailableVariants()
+    {
+        return $this->variants->filter(function (BaseVariantInterface $variant) {
+            return !$variant->isDeleted() && !$variant->isMaster() && $variant->isAvailable();
+        });
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setVariants(Collection $variants)
+    {
+        $this->variants->clear();
+
+        foreach ($variants as $variant) {
+            $this->addVariant($variant);
+        }
 
         return $this;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addVariant(BaseVariantInterface $variant)
+    {
+        if (!$this->hasVariant($variant)) {
+            $this->variants->add($variant);
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeVariant(BaseVariantInterface $variant)
+    {
+        if ($this->hasVariant($variant)) {
+            $this->variants->removeElement($variant);
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasVariant(BaseVariantInterface $variant)
+    {
+        return $this->variants->contains($variant);
+    }
+
 }
