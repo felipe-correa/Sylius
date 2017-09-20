@@ -11,6 +11,11 @@
 
 namespace Sylius\Component\Core\Model;
 
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Sylius\Component\Core\Model\ProductVariantInterface;
+use Sylius\Component\Variation\Model\VariantInterface as BaseVariantInterface;
+
 class ProductVariantImage extends Image implements ProductVariantImageInterface
 {
     /**
