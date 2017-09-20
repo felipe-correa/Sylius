@@ -569,4 +569,13 @@ class ResourceController extends FOSRestController
             }
         }
     }
+
+
+    /**
+     * @return \Sylius\Component\Channel\Context\ChannelContextInterface
+     */
+    protected function getChannelContext()
+    {
+        return $this->get('sylius.context.channel');
+    }
 }

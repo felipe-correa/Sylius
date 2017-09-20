@@ -77,7 +77,7 @@ fos_rest:
             - { path: '^/', stop: true }
 
 hwi_oauth:
-    firewall_name: main
+    firewall_names: [main]
     resource_owners:
         amazon:
             type:          amazon
