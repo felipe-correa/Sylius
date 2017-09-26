@@ -22,6 +22,7 @@
             <generator strategy="AUTO" />
         </id>
         <field name="name" column="name" type="string" />
+        <!--
         <field name="slug" column="slug" type="string" unique="false">
             <gedmo:slug fields="name" unique="false" />
         </field>
@@ -37,6 +38,7 @@
                 </gedmo:handler>
             </gedmo:slug>
         </field>
+        -->
         <field name="description" column="description" type="text" nullable="true" />
         <unique-constraints>
             <unique-constraint columns="locale,permalink" name="permalink_uidx" />

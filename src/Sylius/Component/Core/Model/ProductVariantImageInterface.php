@@ -11,6 +11,8 @@
 
 namespace Sylius\Component\Core\Model;
 
+use Doctrine\Common\Collections\Collection;
+
 interface ProductVariantImageInterface extends ImageInterface
 {
     /**
@@ -18,12 +20,11 @@ interface ProductVariantImageInterface extends ImageInterface
      *
      * @return ProductVariantInterface
      */
-    public function getVariant();
-
+    public function getVariants();
     /**
      * Set the product variant.
      *
-     * @param ProductVariantInterface $variant
+     * @param ProductVariantInterface $variants
      */
-    public function setVariant(ProductVariantInterface $variant = null);
+    public function setVariants(Collection $variants);
 }

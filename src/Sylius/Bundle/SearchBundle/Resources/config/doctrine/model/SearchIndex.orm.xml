@@ -40,7 +40,9 @@
             in mysql table sylius_search_index and then for contability purposen and avoid remove this
             index in the futuro we'll let this line index with the name same:
             -->
-            <index name="fulltext_value_tags" columns="value,tags" />
+            <index name="fulltext_tags_value_itemsku_itemname" columns="value,tags,item_sku,item_name" />
+            <index name="fulltext_item_sku" columns="item_sku" />
+            <index name="fulltext_item_name" columns="item_name" />
         </indexes>
 
         <id name="id" type="integer" column="id">
@@ -51,6 +53,8 @@
         <field name="entity" type="string" column="entity" length="255"/>
         <field name="value" type="text" column="value"/>
         <field name="tags" type="text" column="tags" nullable="true"/>
+        <field name="itemSku" type="text" column="item_sku" nullable="true"/>
+        <field name="itemName" type="text" column="item_name" nullable="true"/>
         <field name="createdAt" type="datetime" column="created_at">
             <gedmo:timestampable on="create"/>
         </field>

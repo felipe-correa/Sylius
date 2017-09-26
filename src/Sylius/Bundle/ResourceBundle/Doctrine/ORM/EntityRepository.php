@@ -35,7 +35,9 @@ class EntityRepository extends BaseEntityRepository implements RepositoryInterfa
     {
         $queryBuilder = $this->getQueryBuilder()
             ->andWhere($this->getAlias().'.id = '.intval($id));
+
         $this->applyCriteria($queryBuilder, $criteria);
+
         return
             $queryBuilder
                 ->getQuery()
@@ -49,7 +51,9 @@ class EntityRepository extends BaseEntityRepository implements RepositoryInterfa
     public function findAll(array $criteria = array())
     {
         $queryBuilder = $this->getCollectionQueryBuilder();
+
         $this->applyCriteria($queryBuilder, $criteria);
+
         return $queryBuilder
             ->getQuery()
             ->getResult()
