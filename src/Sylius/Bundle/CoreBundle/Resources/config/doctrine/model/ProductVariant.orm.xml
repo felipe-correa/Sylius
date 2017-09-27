@@ -58,6 +58,9 @@
         </field>
 
         <many-to-many field="images" target-entity="Sylius\Component\Core\Model\ProductVariantImageInterface">
+            <order-by>
+                <order-by-field name="sort" direction="ASC" />
+            </order-by>
             <cascade>
                 <cascade-persist/>
                 <cascade-merge/>
