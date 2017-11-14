@@ -55,6 +55,11 @@ class SearchIndex implements SearchIndexInterface
     private $itemName;
 
     /**
+     * @var string
+     */
+    private $itemKeywords;
+
+    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -175,6 +180,22 @@ class SearchIndex implements SearchIndexInterface
     {
         $this->itemSku = $itemSku;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getItemKeywords()
+    {
+        return $this->itemKeywords;
+    }
+
+    /**
+     * @param string $itemKeywords
+     */
+    public function setItemKeywords($itemKeywords)
+    {
+        $this->itemKeywords = $itemKeywords;
     }
 
     /**

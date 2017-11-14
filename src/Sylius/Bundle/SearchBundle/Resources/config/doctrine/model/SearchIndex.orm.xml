@@ -43,6 +43,7 @@
             <index name="fulltext_tags_value_itemsku_itemname" columns="value,tags,item_sku,item_name" />
             <index name="fulltext_item_sku" columns="item_sku" />
             <index name="fulltext_item_name" columns="item_name" />
+            <index name="fulltext_item_keywords" columns="item_keywords" />
         </indexes>
 
         <id name="id" type="integer" column="id">
@@ -55,6 +56,7 @@
         <field name="tags" type="text" column="tags" nullable="true"/>
         <field name="itemSku" type="text" column="item_sku" nullable="true"/>
         <field name="itemName" type="text" column="item_name" nullable="true"/>
+        <field name="itemKeywords" type="text" column="item_keywords" nullable="true"/>
         <field name="createdAt" type="datetime" column="created_at">
             <gedmo:timestampable on="create"/>
         </field>
