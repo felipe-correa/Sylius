@@ -18,6 +18,7 @@
         <discriminator-map>
             <discriminator-mapping value="country" class="Sylius\Component\Addressing\Model\ZoneMemberCountry" />
             <discriminator-mapping value="province" class="Sylius\Component\Addressing\Model\ZoneMemberProvince" />
+            <discriminator-mapping value="city" class="Uoou\Bundle\CoreBundle\Entity\ZoneMemberCity"/>
             <discriminator-mapping value="zone" class="Sylius\Component\Addressing\Model\ZoneMemberZone" />
         </discriminator-map>
         <id name="id" column="id" type="integer">
