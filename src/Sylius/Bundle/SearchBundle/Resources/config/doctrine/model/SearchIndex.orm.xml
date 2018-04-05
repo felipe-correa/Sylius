@@ -40,7 +40,7 @@
             in mysql table sylius_search_index and then for contability purposen and avoid remove this
             index in the futuro we'll let this line index with the name same:
             -->
-            <index name="fulltext_tags_value_itemsku_itemname" columns="value,tags,item_sku,item_name" />
+            <index name="fulltext_tags_value" columns="value,tags" />
             <index name="fulltext_item_sku" columns="item_sku" />
             <index name="fulltext_item_name" columns="item_name" />
             <index name="fulltext_item_keywords" columns="item_keywords" />
