@@ -27,6 +27,9 @@
         </many-to-one>
 
         <many-to-one field="parent" target-entity="Sylius\Component\Taxonomy\Model\TaxonInterface" inversed-by="children">
+            <cascade>
+                <cascade-persist />
+            </cascade>
             <join-column name="parent_id" referenced-column-name="id" nullable="true" on-delete="CASCADE" />
             <gedmo:tree-parent />
         </many-to-one>
